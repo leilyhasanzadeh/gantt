@@ -6,6 +6,8 @@ import WeekHeader from './WeekHeader';
 import MonthHeader from './MonthHeader';
 import Grid from './Grid';
 import Labels from './Labels';
+import GanttTime from './GanttTime';
+import SelectItem from "./SelectItem";
 import LinkLine from './LinkLine';
 import Bar from './Bar';
 import getStyles from './styles';
@@ -22,6 +24,8 @@ export default function Gantt({
   onClick = NOOP,
   viewMode = 'week',
   maxTextWidth = 140,
+  maxDurationWidth = 140,
+  selectedWidth = 50,
   offsetY = 60,
   rowHeight = 40,
   barHeight = 16,
@@ -30,20 +34,20 @@ export default function Gantt({
   showLinks = true,
   showDelay = true,
   start,
-  end
+  end,
 }) {
   const unit = UNIT[viewMode];
   const minTime = start.getTime() - unit * 48;
   const maxTime = end.getTime() + unit * 48;
 
-  const width = (maxTime - minTime) / unit + maxTextWidth;
+  const width = (maxTime - minTime) / unit + maxTextWidth + maxDurationWidth;
   const height = data.length * rowHeight + offsetY;
   const box = `0 0 ${width} ${height}`;
   const current = Date.now();
   const styles = getStyles(styleOptions);
 
   return (
-    <svg width={width} height={height} viewBox={box}>
+    <svg width={width} height={height} viewBox={box} xmlns="http://www.w3.org/2000/svg">
       <Layout
         styles={styles}
         width={width}
@@ -51,6 +55,8 @@ export default function Gantt({
         offsetY={offsetY}
         thickWidth={thickWidth}
         maxTextWidth={maxTextWidth}
+        maxDurationWidth={maxDurationWidth}
+        selectedWidth={selectedWidth}
       />
       {viewMode === 'day' ? (
         <DayHeader
@@ -61,6 +67,8 @@ export default function Gantt({
           minTime={minTime}
           maxTime={maxTime}
           maxTextWidth={maxTextWidth}
+          maxDurationWidth={maxDurationWidth}
+          selectedWidth={selectedWidth}
         />
       ) : null}
       {viewMode === 'week' ? (
@@ -72,6 +80,8 @@ export default function Gantt({
           minTime={minTime}
           maxTime={maxTime}
           maxTextWidth={maxTextWidth}
+          maxDurationWidth={maxDurationWidth}
+          selectedWidth={selectedWidth}
         />
       ) : null}
       {viewMode === 'month' ? (
@@ -82,6 +92,8 @@ export default function Gantt({
           minTime={minTime}
           maxTime={maxTime}
           maxTextWidth={maxTextWidth}
+          maxDurationWidth={maxDurationWidth}
+          selectedWidth={selectedWidth}
         />
       ) : null}
       <Grid
@@ -92,7 +104,19 @@ export default function Gantt({
         offsetY={offsetY}
         rowHeight={rowHeight}
         maxTextWidth={maxTextWidth}
+        maxDurationWidth={maxDurationWidth}
+        selectedWidth={selectedWidth}
       />
+      {selectedWidth > 0 ? (
+        <SelectItem
+          styles={styles}
+          data={data}
+          onClick={onClick}
+          offsetY={offsetY}
+          rowHeight={rowHeight}
+          selectedWidth={selectedWidth}
+        />
+      ) : null}
       {maxTextWidth > 0 ? (
         <Labels
           styles={styles}
@@ -100,6 +124,20 @@ export default function Gantt({
           onClick={onClick}
           offsetY={offsetY}
           rowHeight={rowHeight}
+          maxTextWidth={maxTextWidth}
+          selectedWidth={selectedWidth}
+        />
+      ) : null}
+      {maxDurationWidth > 0 ? (
+        <GanttTime
+          styles={styles}
+          data={data}
+          onClick={onClick}
+          offsetY={offsetY}
+          rowHeight={rowHeight}
+          maxTextWidth={maxTextWidth}
+          maxDurationWidth={maxDurationWidth}
+          selectedWidth={selectedWidth}
         />
       ) : null}
       {showLinks ? (
@@ -114,6 +152,8 @@ export default function Gantt({
           rowHeight={rowHeight}
           barHeight={barHeight}
           maxTextWidth={maxTextWidth}
+          maxDurationWidth={maxDurationWidth}
+          selectedWidth={selectedWidth}
         />
       ) : null}
       <Bar
@@ -129,6 +169,8 @@ export default function Gantt({
         rowHeight={rowHeight}
         barHeight={barHeight}
         maxTextWidth={maxTextWidth}
+        maxDurationWidth={maxDurationWidth}
+        selectedWidth={selectedWidth}
       />
     </svg>
   );

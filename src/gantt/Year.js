@@ -1,7 +1,7 @@
 import h from '../h';
 
 export default function Year({
-  styles, months, unit, offsetY, minTime, maxTime, maxTextWidth
+  styles, months, unit, offsetY, minTime, maxTime, maxTextWidth, selectedWidth
 }) {
   const years = months.filter((v) => (new Date(v)).getMonth() === 0);
 
@@ -9,7 +9,7 @@ export default function Year({
   years.push(maxTime);
 
   const ticks = [];
-  const x0 = maxTextWidth;
+  const x0 = selectedWidth + maxTextWidth;
   const y2 = offsetY / 2;
   const len = years.length - 1;
   for (let i = 0; i < len; i++) {

@@ -4,13 +4,17 @@
 	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.Gantt = {}));
 }(this, (function (exports) { 'use strict';
 
+	function getDefaultExportFromCjs (x) {
+		return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+	}
+
 	function createCommonjsModule(fn, basedir, module) {
 		return module = {
-		  path: basedir,
-		  exports: {},
-		  require: function (path, base) {
-	      return commonjsRequire(path, (base === undefined || base === null) ? module.path : base);
-	    }
+			path: basedir,
+			exports: {},
+			require: function (path, base) {
+				return commonjsRequire(path, (base === undefined || base === null) ? module.path : base);
+			}
 		}, fn(module, module.exports), module.exports;
 	}
 
@@ -34,12 +38,17 @@
 	    return target;
 	  };
 
+	  module.exports["default"] = module.exports, module.exports.__esModule = true;
 	  return _extends.apply(this, arguments);
 	}
 
 	module.exports = _extends;
+	module.exports["default"] = module.exports, module.exports.__esModule = true;
 	});
 
+	var _extends = /*@__PURE__*/getDefaultExportFromCjs(_extends_1);
+
+	var defineProperty = createCommonjsModule(function (module) {
 	function _defineProperty(obj, key, value) {
 	  if (key in obj) {
 	    Object.defineProperty(obj, key, {
@@ -55,16 +64,26 @@
 	  return obj;
 	}
 
-	var defineProperty = _defineProperty;
+	module.exports = _defineProperty;
+	module.exports["default"] = module.exports, module.exports.__esModule = true;
+	});
 
+	var _defineProperty = /*@__PURE__*/getDefaultExportFromCjs(defineProperty);
+
+	var classCallCheck = createCommonjsModule(function (module) {
 	function _classCallCheck(instance, Constructor) {
 	  if (!(instance instanceof Constructor)) {
 	    throw new TypeError("Cannot call a class as a function");
 	  }
 	}
 
-	var classCallCheck = _classCallCheck;
+	module.exports = _classCallCheck;
+	module.exports["default"] = module.exports, module.exports.__esModule = true;
+	});
 
+	var _classCallCheck = /*@__PURE__*/getDefaultExportFromCjs(classCallCheck);
+
+	var createClass = createCommonjsModule(function (module) {
 	function _defineProperties(target, props) {
 	  for (var i = 0; i < props.length; i++) {
 	    var descriptor = props[i];
@@ -81,11 +100,15 @@
 	  return Constructor;
 	}
 
-	var createClass = _createClass;
+	module.exports = _createClass;
+	module.exports["default"] = module.exports, module.exports.__esModule = true;
+	});
 
-	function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+	var _createClass = /*@__PURE__*/getDefaultExportFromCjs(createClass);
 
-	function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+	function ownKeys$5(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+	function _objectSpread$5(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$5(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$5(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 	function addChild(c, childNodes) {
 	  if (c === null || c === undefined) return;
@@ -111,7 +134,7 @@
 	  addChild(children, childNodes);
 
 	  if (typeof tag === 'function') {
-	    return tag(_objectSpread(_objectSpread({}, props), {}, {
+	    return tag(_objectSpread$5(_objectSpread$5({}, props), {}, {
 	      children: childNodes
 	    }));
 	  }
@@ -123,9 +146,9 @@
 	  };
 	}
 
-	function ownKeys$1(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+	function ownKeys$4(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-	function _objectSpread$1(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$1(Object(source), true).forEach(function (key) { defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$1(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+	function _objectSpread$4(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$4(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$4(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 	var DAY = 24 * 3600 * 1000;
 	function addDays(date, days) {
@@ -254,7 +277,7 @@
 	  var map = {};
 	  var tmp = tasks.map(function (t, i) {
 	    map[t.id] = i;
-	    return _objectSpread$1(_objectSpread$1({}, t), {}, {
+	    return _objectSpread$4(_objectSpread$4({}, t), {}, {
 	      children: [],
 	      links: []
 	    });
@@ -485,7 +508,9 @@
 	      height = _ref.height,
 	      offsetY = _ref.offsetY,
 	      thickWidth = _ref.thickWidth,
-	      maxTextWidth = _ref.maxTextWidth;
+	      maxTextWidth = _ref.maxTextWidth,
+	      maxDurationWidth = _ref.maxDurationWidth,
+	      selectedWidth = _ref.selectedWidth;
 	  var x0 = thickWidth / 2;
 	  var W = width - thickWidth;
 	  var H = height - thickWidth;
@@ -502,7 +527,7 @@
 	    y2: offsetY - x0,
 	    style: styles.bline
 	  }), h("line", {
-	    x1: maxTextWidth,
+	    x1: selectedWidth + maxTextWidth + maxDurationWidth,
 	    x2: width,
 	    y1: offsetY / 2,
 	    y2: offsetY / 2,
@@ -517,14 +542,16 @@
 	      offsetY = _ref.offsetY,
 	      minTime = _ref.minTime,
 	      maxTime = _ref.maxTime,
-	      maxTextWidth = _ref.maxTextWidth;
+	      maxTextWidth = _ref.maxTextWidth,
+	      maxDurationWidth = _ref.maxDurationWidth,
+	      selectedWidth = _ref.selectedWidth;
 	  var months = dates.filter(function (v) {
 	    return new Date(v).getDate() === 1;
 	  });
 	  months.unshift(minTime);
 	  months.push(maxTime);
 	  var ticks = [];
-	  var x0 = maxTextWidth;
+	  var x0 = selectedWidth + maxTextWidth + maxDurationWidth;
 	  var y2 = offsetY / 2;
 	  var len = months.length - 1;
 
@@ -556,10 +583,12 @@
 	      maxTime = _ref.maxTime,
 	      height = _ref.height,
 	      offsetY = _ref.offsetY,
-	      maxTextWidth = _ref.maxTextWidth;
+	      maxTextWidth = _ref.maxTextWidth,
+	      maxDurationWidth = _ref.maxDurationWidth,
+	      selectedWidth = _ref.selectedWidth;
 	  var dates = getDates(minTime, maxTime);
 	  var ticks = [];
-	  var x0 = maxTextWidth;
+	  var x0 = maxTextWidth + maxDurationWidth + selectedWidth;
 	  var y0 = offsetY / 2;
 	  var RH = height - y0;
 	  var len = dates.length - 1;
@@ -601,7 +630,9 @@
 	    offsetY: offsetY,
 	    minTime: minTime,
 	    maxTime: maxTime,
-	    maxTextWidth: maxTextWidth
+	    maxTextWidth: maxTextWidth,
+	    maxDurationWidth: maxDurationWidth,
+	    selectedWidth: selectedWidth
 	  }), ticks);
 	}
 
@@ -612,17 +643,18 @@
 	      maxTime = _ref.maxTime,
 	      height = _ref.height,
 	      offsetY = _ref.offsetY,
-	      maxTextWidth = _ref.maxTextWidth;
+	      maxTextWidth = _ref.maxTextWidth,
+	      maxDurationWidth = _ref.maxDurationWidth,
+	      selectedWidth = _ref.selectedWidth;
 	  var dates = getDates(minTime, maxTime);
 	  var weeks = dates.filter(function (v) {
 	    return new Date(v).getDay() === 0;
 	  });
 	  weeks.push(maxTime);
 	  var ticks = [];
-	  var x0 = maxTextWidth;
+	  var x0 = selectedWidth + maxTextWidth + maxDurationWidth;
 	  var y0 = offsetY;
 	  var RH = height - y0;
-	  var d = DAY / unit;
 	  var len = weeks.length - 1;
 
 	  for (var i = 0; i < len; i++) {
@@ -631,11 +663,11 @@
 	    var curDay = cur.getDate();
 	    var prevDay = addDays(cur, -1).getDate();
 	    ticks.push(h("g", null, h("rect", {
-	      x: x - d,
+	      x: x,
 	      y: y0,
-	      width: d * 2,
+	      width: 56,
 	      height: RH,
-	      style: styles.week
+	      style: i % 2 === 0 ? styles.weekGray : styles.weekWhite
 	    }), h("line", {
 	      x1: x,
 	      x2: x,
@@ -660,7 +692,9 @@
 	    offsetY: offsetY,
 	    minTime: minTime,
 	    maxTime: maxTime,
-	    maxTextWidth: maxTextWidth
+	    maxTextWidth: maxTextWidth,
+	    maxDurationWidth: maxDurationWidth,
+	    selectedWidth: selectedWidth
 	  }), ticks);
 	}
 
@@ -671,14 +705,15 @@
 	      offsetY = _ref.offsetY,
 	      minTime = _ref.minTime,
 	      maxTime = _ref.maxTime,
-	      maxTextWidth = _ref.maxTextWidth;
+	      maxTextWidth = _ref.maxTextWidth,
+	      selectedWidth = _ref.selectedWidth;
 	  var years = months.filter(function (v) {
 	    return new Date(v).getMonth() === 0;
 	  });
 	  years.unshift(minTime);
 	  years.push(maxTime);
 	  var ticks = [];
-	  var x0 = maxTextWidth;
+	  var x0 = selectedWidth + maxTextWidth;
 	  var y2 = offsetY / 2;
 	  var len = years.length - 1;
 
@@ -708,7 +743,9 @@
 	      minTime = _ref.minTime,
 	      maxTime = _ref.maxTime,
 	      offsetY = _ref.offsetY,
-	      maxTextWidth = _ref.maxTextWidth;
+	      maxTextWidth = _ref.maxTextWidth,
+	      maxDurationWidth = _ref.maxDurationWidth,
+	      selectedWidth = _ref.selectedWidth;
 	  var MONTH = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 	  var dates = getDates(minTime, maxTime);
 	  var months = dates.filter(function (v) {
@@ -717,7 +754,7 @@
 	  months.unshift(minTime);
 	  months.push(maxTime);
 	  var ticks = [];
-	  var x0 = maxTextWidth;
+	  var x0 = selectedWidth + maxTextWidth + maxDurationWidth;
 	  var y0 = offsetY / 2;
 	  var len = months.length - 1;
 
@@ -746,7 +783,9 @@
 	    offsetY: offsetY,
 	    minTime: minTime,
 	    maxTime: maxTime,
-	    maxTextWidth: maxTextWidth
+	    maxTextWidth: maxTextWidth,
+	    maxDurationWidth: maxDurationWidth,
+	    selectedWidth: selectedWidth
 	  }), ticks);
 	}
 
@@ -757,7 +796,9 @@
 	      height = _ref.height,
 	      offsetY = _ref.offsetY,
 	      rowHeight = _ref.rowHeight,
-	      maxTextWidth = _ref.maxTextWidth;
+	      maxTextWidth = _ref.maxTextWidth,
+	      maxDurationWidth = _ref.maxDurationWidth,
+	      selectedWidth = _ref.selectedWidth;
 	  return h("g", null, data.map(function (v, i) {
 	    var y = (i + 1) * rowHeight + offsetY;
 	    return h("line", {
@@ -769,8 +810,14 @@
 	      style: styles.line
 	    });
 	  }), h("line", {
-	    x1: maxTextWidth,
-	    x2: maxTextWidth,
+	    x1: maxTextWidth + selectedWidth,
+	    x2: maxTextWidth + selectedWidth,
+	    y1: 0,
+	    y2: height,
+	    style: styles.bline
+	  }), h("line", {
+	    x1: selectedWidth + maxTextWidth + maxDurationWidth,
+	    x2: selectedWidth + maxTextWidth + maxDurationWidth,
 	    y1: 0,
 	    y2: height,
 	    style: styles.bline
@@ -782,11 +829,17 @@
 	      data = _ref.data,
 	      _onClick = _ref.onClick,
 	      rowHeight = _ref.rowHeight,
-	      offsetY = _ref.offsetY;
-	  return h("g", null, data.map(function (v, i) {
+	      offsetY = _ref.offsetY,
+	      maxTextWidth = _ref.maxTextWidth,
+	      selectedWidth = _ref.selectedWidth;
+	  return h("g", null, h("text", {
+	    x: selectedWidth + maxTextWidth / 2,
+	    y: offsetY * 0.5,
+	    style: styles.text3
+	  }, "Title"), data.map(function (v, i) {
 	    return h("text", {
 	      key: i,
-	      x: 10,
+	      x: selectedWidth + 5,
 	      y: (i + 0.5) * rowHeight + offsetY,
 	      "class": "gantt-label",
 	      style: styles.label,
@@ -794,6 +847,60 @@
 	        return _onClick(v);
 	      }
 	    }, v.text);
+	  }));
+	}
+
+	function GanttTime(_ref) {
+	  var styles = _ref.styles,
+	      data = _ref.data,
+	      _onClick = _ref.onClick,
+	      rowHeight = _ref.rowHeight,
+	      offsetY = _ref.offsetY,
+	      maxTextWidth = _ref.maxTextWidth,
+	      maxDurationWidth = _ref.maxDurationWidth,
+	      selectedWidth = _ref.selectedWidth;
+	  return h("g", null, h("text", {
+	    x: maxTextWidth + selectedWidth + maxDurationWidth / 2,
+	    y: offsetY * 0.5,
+	    style: styles.text3
+	  }, "Start/End"), data.map(function (v, i) {
+	    return h("text", {
+	      key: i,
+	      x: selectedWidth + maxTextWidth + 5,
+	      y: (i + 0.5) * rowHeight + offsetY,
+	      "class": "gantt-label",
+	      style: styles.label,
+	      onClick: function onClick() {
+	        return _onClick(v);
+	      }
+	    }, v.text);
+	  }));
+	}
+
+	function SelectItem(_ref) {
+	  var styles = _ref.styles,
+	      data = _ref.data,
+	      rowHeight = _ref.rowHeight,
+	      offsetY = _ref.offsetY,
+	      selectedWidth = _ref.selectedWidth;
+	  return h("g", null, h("text", {
+	    x: selectedWidth / 2,
+	    y: offsetY * 0.5,
+	    style: styles.text3
+	  }), data.map(function (v, i) {
+	    return h("foreignObject", {
+	      width: selectedWidth,
+	      height: rowHeight,
+	      x: 0,
+	      y: i * rowHeight + offsetY
+	    }, h("input", {
+	      type: "checkbox",
+	      style: {
+	        marginTop: "".concat((rowHeight - 13) / 2, "px")
+	      },
+	      "data-id": v.id,
+	      "class": "construe__checkbox"
+	    }));
 	  }));
 	}
 
@@ -805,8 +912,10 @@
 	      minTime = _ref.minTime,
 	      rowHeight = _ref.rowHeight,
 	      barHeight = _ref.barHeight,
-	      maxTextWidth = _ref.maxTextWidth;
-	  var x0 = maxTextWidth;
+	      maxTextWidth = _ref.maxTextWidth,
+	      maxDurationWidth = _ref.maxDurationWidth,
+	      selectedWidth = _ref.selectedWidth;
+	  var x0 = selectedWidth + maxTextWidth + maxDurationWidth;
 	  var y0 = rowHeight / 2 + offsetY;
 	  var map = {};
 	  data.forEach(function (v, i) {
@@ -959,9 +1068,11 @@
 	      rowHeight = _ref.rowHeight,
 	      barHeight = _ref.barHeight,
 	      maxTextWidth = _ref.maxTextWidth,
+	      maxDurationWidth = _ref.maxDurationWidth,
 	      current = _ref.current,
-	      onClick = _ref.onClick;
-	  var x0 = maxTextWidth;
+	      onClick = _ref.onClick,
+	      selectedWidth = _ref.selectedWidth;
+	  var x0 = maxTextWidth + maxDurationWidth + selectedWidth;
 	  var y0 = (rowHeight - barHeight) / 2 + offsetY;
 	  var cur = x0 + (current - minTime) / unit;
 	  return h("g", null, current > minTime ? h("line", {
@@ -1036,15 +1147,7 @@
 	        cursor: 'pointer'
 	      },
 	      onClick: handler
-	    }, h("text", {
-	      x: x - 4,
-	      y: cy,
-	      style: styles.text1
-	    }, formatDay(v.start)), h("text", {
-	      x: x + w1 + 4,
-	      y: cy,
-	      style: styles.text2
-	    }, formatDay(v.end)), h("rect", {
+	    }, h("rect", {
 	      x: x,
 	      y: y,
 	      width: w1,
@@ -1079,9 +1182,9 @@
 	  }));
 	}
 
-	function ownKeys$2(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+	function ownKeys$3(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-	function _objectSpread$2(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$2(Object(source), true).forEach(function (key) { defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$2(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+	function _objectSpread$3(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$3(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$3(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 	var SIZE = '14px';
 	var TYPE = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
@@ -1158,21 +1261,27 @@
 	    week: {
 	      fill: 'rgba(252, 248, 227, .6)'
 	    },
-	    box: _objectSpread$2(_objectSpread$2({}, thickLine), {}, {
+	    weekGray: {
+	      fill: 'rgb(248, 247, 255, 1)'
+	    },
+	    weekWhite: {
+	      fill: 'rgb(255, 255, 255, 1)'
+	    },
+	    box: _objectSpread$3(_objectSpread$3({}, thickLine), {}, {
 	      fill: bgColor
 	    }),
 	    line: line,
 	    cline: redLine,
 	    bline: thickLine,
 	    label: text,
-	    groupLabel: _objectSpread$2(_objectSpread$2({}, text), {}, {
+	    groupLabel: _objectSpread$3(_objectSpread$3({}, text), {}, {
 	      'font-weight': '600'
 	    }),
-	    text1: _objectSpread$2(_objectSpread$2(_objectSpread$2({}, text), smallText), {}, {
+	    text1: _objectSpread$3(_objectSpread$3(_objectSpread$3({}, text), smallText), {}, {
 	      'text-anchor': 'end'
 	    }),
-	    text2: _objectSpread$2(_objectSpread$2({}, text), smallText),
-	    text3: _objectSpread$2(_objectSpread$2(_objectSpread$2({}, text), smallText), {}, {
+	    text2: _objectSpread$3(_objectSpread$3({}, text), smallText),
+	    text3: _objectSpread$3(_objectSpread$3(_objectSpread$3({}, text), smallText), {}, {
 	      'text-anchor': 'middle'
 	    }),
 	    link: {
@@ -1230,6 +1339,10 @@
 	      viewMode = _ref$viewMode === void 0 ? 'week' : _ref$viewMode,
 	      _ref$maxTextWidth = _ref.maxTextWidth,
 	      maxTextWidth = _ref$maxTextWidth === void 0 ? 140 : _ref$maxTextWidth,
+	      _ref$maxDurationWidth = _ref.maxDurationWidth,
+	      maxDurationWidth = _ref$maxDurationWidth === void 0 ? 140 : _ref$maxDurationWidth,
+	      _ref$selectedWidth = _ref.selectedWidth,
+	      selectedWidth = _ref$selectedWidth === void 0 ? 50 : _ref$selectedWidth,
 	      _ref$offsetY = _ref.offsetY,
 	      offsetY = _ref$offsetY === void 0 ? 60 : _ref$offsetY,
 	      _ref$rowHeight = _ref.rowHeight,
@@ -1249,7 +1362,7 @@
 	  var unit = UNIT[viewMode];
 	  var minTime = start.getTime() - unit * 48;
 	  var maxTime = end.getTime() + unit * 48;
-	  var width = (maxTime - minTime) / unit + maxTextWidth;
+	  var width = (maxTime - minTime) / unit + maxTextWidth + maxDurationWidth;
 	  var height = data.length * rowHeight + offsetY;
 	  var box = "0 0 ".concat(width, " ").concat(height);
 	  var current = Date.now();
@@ -1257,14 +1370,17 @@
 	  return h("svg", {
 	    width: width,
 	    height: height,
-	    viewBox: box
+	    viewBox: box,
+	    xmlns: "http://www.w3.org/2000/svg"
 	  }, h(Layout, {
 	    styles: styles,
 	    width: width,
 	    height: height,
 	    offsetY: offsetY,
 	    thickWidth: thickWidth,
-	    maxTextWidth: maxTextWidth
+	    maxTextWidth: maxTextWidth,
+	    maxDurationWidth: maxDurationWidth,
+	    selectedWidth: selectedWidth
 	  }), viewMode === 'day' ? h(DayHeader, {
 	    styles: styles,
 	    unit: unit,
@@ -1272,7 +1388,9 @@
 	    offsetY: offsetY,
 	    minTime: minTime,
 	    maxTime: maxTime,
-	    maxTextWidth: maxTextWidth
+	    maxTextWidth: maxTextWidth,
+	    maxDurationWidth: maxDurationWidth,
+	    selectedWidth: selectedWidth
 	  }) : null, viewMode === 'week' ? h(WeekHeader, {
 	    styles: styles,
 	    unit: unit,
@@ -1280,14 +1398,18 @@
 	    offsetY: offsetY,
 	    minTime: minTime,
 	    maxTime: maxTime,
-	    maxTextWidth: maxTextWidth
+	    maxTextWidth: maxTextWidth,
+	    maxDurationWidth: maxDurationWidth,
+	    selectedWidth: selectedWidth
 	  }) : null, viewMode === 'month' ? h(MonthHeader, {
 	    styles: styles,
 	    unit: unit,
 	    offsetY: offsetY,
 	    minTime: minTime,
 	    maxTime: maxTime,
-	    maxTextWidth: maxTextWidth
+	    maxTextWidth: maxTextWidth,
+	    maxDurationWidth: maxDurationWidth,
+	    selectedWidth: selectedWidth
 	  }) : null, h(Grid, {
 	    styles: styles,
 	    data: data,
@@ -1295,13 +1417,33 @@
 	    height: height,
 	    offsetY: offsetY,
 	    rowHeight: rowHeight,
-	    maxTextWidth: maxTextWidth
-	  }), maxTextWidth > 0 ? h(Labels, {
+	    maxTextWidth: maxTextWidth,
+	    maxDurationWidth: maxDurationWidth,
+	    selectedWidth: selectedWidth
+	  }), selectedWidth > 0 ? h(SelectItem, {
 	    styles: styles,
 	    data: data,
 	    onClick: onClick,
 	    offsetY: offsetY,
-	    rowHeight: rowHeight
+	    rowHeight: rowHeight,
+	    selectedWidth: selectedWidth
+	  }) : null, maxTextWidth > 0 ? h(Labels, {
+	    styles: styles,
+	    data: data,
+	    onClick: onClick,
+	    offsetY: offsetY,
+	    rowHeight: rowHeight,
+	    maxTextWidth: maxTextWidth,
+	    selectedWidth: selectedWidth
+	  }) : null, maxDurationWidth > 0 ? h(GanttTime, {
+	    styles: styles,
+	    data: data,
+	    onClick: onClick,
+	    offsetY: offsetY,
+	    rowHeight: rowHeight,
+	    maxTextWidth: maxTextWidth,
+	    maxDurationWidth: maxDurationWidth,
+	    selectedWidth: selectedWidth
 	  }) : null, showLinks ? h(LinkLine, {
 	    styles: styles,
 	    data: data,
@@ -1312,7 +1454,9 @@
 	    minTime: minTime,
 	    rowHeight: rowHeight,
 	    barHeight: barHeight,
-	    maxTextWidth: maxTextWidth
+	    maxTextWidth: maxTextWidth,
+	    maxDurationWidth: maxDurationWidth,
+	    selectedWidth: selectedWidth
 	  }) : null, h(Bar, {
 	    styles: styles,
 	    data: data,
@@ -1325,7 +1469,9 @@
 	    showDelay: showDelay,
 	    rowHeight: rowHeight,
 	    barHeight: barHeight,
-	    maxTextWidth: maxTextWidth
+	    maxTextWidth: maxTextWidth,
+	    maxDurationWidth: maxDurationWidth,
+	    selectedWidth: selectedWidth
 	  }));
 	}
 
@@ -1337,17 +1483,24 @@
 	    module.exports = _typeof = function _typeof(obj) {
 	      return typeof obj;
 	    };
+
+	    module.exports["default"] = module.exports, module.exports.__esModule = true;
 	  } else {
 	    module.exports = _typeof = function _typeof(obj) {
 	      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
 	    };
+
+	    module.exports["default"] = module.exports, module.exports.__esModule = true;
 	  }
 
 	  return _typeof(obj);
 	}
 
 	module.exports = _typeof;
+	module.exports["default"] = module.exports, module.exports.__esModule = true;
 	});
+
+	var _typeof = /*@__PURE__*/getDefaultExportFromCjs(_typeof_1);
 
 	var NS = 'http://www.w3.org/2000/svg';
 	var doc = document;
@@ -1356,7 +1509,7 @@
 	  Object.keys(props).forEach(function (k) {
 	    var v = props[k];
 
-	    if (k === 'style' && _typeof_1(v) === 'object') {
+	    if (k === 'style' && _typeof(v) === 'object') {
 	      Object.keys(v).forEach(function (sk) {
 	        // eslint-disable-next-line
 	        node.style[sk] = v[sk];
@@ -1371,7 +1524,7 @@
 	  });
 	}
 
-	function render(vnode, ctx) {
+	function render$2(vnode, ctx) {
 	  var tag = vnode.tag,
 	      props = vnode.props,
 	      children = vnode.children;
@@ -1382,20 +1535,20 @@
 	  }
 
 	  children.forEach(function (v) {
-	    node.appendChild(typeof v === 'string' ? doc.createTextNode(v) : render(v));
+	    node.appendChild(typeof v === 'string' ? doc.createTextNode(v) : render$2(v));
 	  });
 	  return node;
 	}
 
-	function ownKeys$3(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+	function ownKeys$2(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-	function _objectSpread$3(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$3(Object(source), true).forEach(function (key) { defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$3(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+	function _objectSpread$2(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$2(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$2(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 	var SVGGantt = /*#__PURE__*/function () {
 	  function SVGGantt(element, data) {
 	    var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
-	    classCallCheck(this, SVGGantt);
+	    _classCallCheck(this, SVGGantt);
 
 	    this.dom = typeof element === 'string' ? document.querySelector(element) : element;
 	    this.format(data);
@@ -1403,7 +1556,7 @@
 	    this.render();
 	  }
 
-	  createClass(SVGGantt, [{
+	  _createClass(SVGGantt, [{
 	    key: "format",
 	    value: function format(data) {
 	      this.data = data;
@@ -1425,12 +1578,12 @@
 	  }, {
 	    key: "setOptions",
 	    value: function setOptions(options) {
-	      this.options = _objectSpread$3(_objectSpread$3({}, this.options), options);
+	      this.options = _objectSpread$2(_objectSpread$2({}, this.options), options);
 	      this.render();
 	    }
 	  }, {
 	    key: "render",
-	    value: function render$1() {
+	    value: function render() {
 	      var data = this.data,
 	          start = this.start,
 	          end = this.end,
@@ -1450,12 +1603,12 @@
 	        options.maxTextWidth = max(data.map(w), 0);
 	      }
 
-	      var props = _objectSpread$3(_objectSpread$3({}, options), {}, {
+	      var props = _objectSpread$2(_objectSpread$2({}, options), {}, {
 	        start: start,
 	        end: end
 	      });
 
-	      this.tree = render(h(Gantt, _extends_1({
+	      this.tree = render$2(h(Gantt, _extends({
 	        data: data
 	      }, props)));
 	      this.dom.appendChild(this.tree);
@@ -1634,9 +1787,9 @@
 	  return ctx;
 	}
 
-	function ownKeys$4(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+	function ownKeys$1(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-	function _objectSpread$4(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$4(Object(source), true).forEach(function (key) { defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$4(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+	function _objectSpread$1(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$1(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$1(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 	var CanvasGantt = /*#__PURE__*/function () {
 	  function CanvasGantt(element, data) {
@@ -1644,7 +1797,7 @@
 
 	    var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
-	    classCallCheck(this, CanvasGantt);
+	    _classCallCheck(this, CanvasGantt);
 
 	    this.ctx = createContext(element);
 	    this.format(data);
@@ -1656,7 +1809,7 @@
 	    };
 	  }
 
-	  createClass(CanvasGantt, [{
+	  _createClass(CanvasGantt, [{
 	    key: "format",
 	    value: function format(data) {
 	      this.data = data;
@@ -1678,7 +1831,7 @@
 	  }, {
 	    key: "setOptions",
 	    value: function setOptions(options) {
-	      this.options = _objectSpread$4(_objectSpread$4({}, this.options), options);
+	      this.options = _objectSpread$1(_objectSpread$1({}, this.options), options);
 	      this.render();
 	    }
 	  }, {
@@ -1699,12 +1852,12 @@
 	        options.maxTextWidth = max(data.map(w), 0);
 	      }
 
-	      var props = _objectSpread$4(_objectSpread$4({}, options), {}, {
+	      var props = _objectSpread$1(_objectSpread$1({}, options), {}, {
 	        start: start,
 	        end: end
 	      });
 
-	      render$1(h(Gantt, _extends_1({
+	      render$1(h(Gantt, _extends({
 	        data: data
 	      }, props)), this.ctx, e);
 	    }
@@ -1721,7 +1874,7 @@
 	  return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\r/g, '&#xD;');
 	}
 
-	function render$2(vnode, ctx) {
+	function render(vnode, ctx) {
 	  var tag = vnode.tag,
 	      props = vnode.props,
 	      children = vnode.children;
@@ -1731,7 +1884,7 @@
 	    var v = props[k];
 	    if (k === 'onClick') return;
 
-	    if (k === 'style' && _typeof_1(v) === 'object') {
+	    if (k === 'style' && _typeof(v) === 'object') {
 	      v = Object.keys(v).map(function (i) {
 	        return "".concat(i, ":").concat(v[i], ";");
 	      }).join('');
@@ -1750,28 +1903,28 @@
 	    if (typeof v === 'string') {
 	      tokens.push(escape(v));
 	    } else {
-	      tokens.push(render$2(v));
+	      tokens.push(render(v));
 	    }
 	  });
 	  tokens.push("</".concat(tag, ">"));
 	  return tokens.join('');
 	}
 
-	function ownKeys$5(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+	function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-	function _objectSpread$5(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$5(Object(source), true).forEach(function (key) { defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$5(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+	function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 	var StrGantt = /*#__PURE__*/function () {
 	  function StrGantt(data) {
 	    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-	    classCallCheck(this, StrGantt);
+	    _classCallCheck(this, StrGantt);
 
 	    this.format(data);
 	    this.options = options;
 	  }
 
-	  createClass(StrGantt, [{
+	  _createClass(StrGantt, [{
 	    key: "format",
 	    value: function format(data) {
 	      this.data = data;
@@ -1792,22 +1945,22 @@
 	  }, {
 	    key: "setOptions",
 	    value: function setOptions(options) {
-	      this.options = _objectSpread$5(_objectSpread$5({}, this.options), options);
+	      this.options = _objectSpread(_objectSpread({}, this.options), options);
 	    }
 	  }, {
 	    key: "render",
-	    value: function render() {
+	    value: function render$1() {
 	      var data = this.data,
 	          start = this.start,
 	          end = this.end,
 	          options = this.options;
 
-	      var props = _objectSpread$5(_objectSpread$5({}, options), {}, {
+	      var props = _objectSpread(_objectSpread({}, options), {}, {
 	        start: start,
 	        end: end
 	      });
 
-	      return render$2(h(Gantt, _extends_1({
+	      return render(h(Gantt, _extends({
 	        data: data
 	      }, props)));
 	    }

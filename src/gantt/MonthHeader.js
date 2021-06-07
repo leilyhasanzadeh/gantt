@@ -3,7 +3,7 @@ import { getDates } from '../utils';
 import Year from './Year';
 
 export default function MonthHeader({
-  styles, unit, minTime, maxTime, offsetY, maxTextWidth
+  styles, unit, minTime, maxTime, offsetY, maxTextWidth, maxDurationWidth, selectedWidth
 }) {
   const MONTH = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   const dates = getDates(minTime, maxTime);
@@ -13,7 +13,7 @@ export default function MonthHeader({
   months.push(maxTime);
 
   const ticks = [];
-  const x0 = maxTextWidth;
+  const x0 = selectedWidth + maxTextWidth + maxDurationWidth;
   const y0 = offsetY / 2;
   const len = months.length - 1;
   for (let i = 0; i < len; i++) {
@@ -40,6 +40,8 @@ export default function MonthHeader({
         minTime={minTime}
         maxTime={maxTime}
         maxTextWidth={maxTextWidth}
+        maxDurationWidth={maxDurationWidth}
+        selectedWidth={selectedWidth}
       />
       {ticks}
     </g>

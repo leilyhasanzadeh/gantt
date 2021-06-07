@@ -2,7 +2,7 @@ import h from '../h';
 import { formatMonth } from '../utils';
 
 export default function YearMonth({
-  styles, dates, unit, offsetY, minTime, maxTime, maxTextWidth
+  styles, dates, unit, offsetY, minTime, maxTime, maxTextWidth, maxDurationWidth, selectedWidth
 }) {
   const months = dates.filter((v) => (new Date(v)).getDate() === 1);
 
@@ -10,7 +10,7 @@ export default function YearMonth({
   months.push(maxTime);
 
   const ticks = [];
-  const x0 = maxTextWidth;
+  const x0 = selectedWidth + maxTextWidth + maxDurationWidth;
   const y2 = offsetY / 2;
   const len = months.length - 1;
   for (let i = 0; i < len; i++) {

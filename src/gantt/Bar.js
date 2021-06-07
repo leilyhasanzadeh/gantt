@@ -2,9 +2,10 @@ import h from '../h';
 import { formatDay } from '../utils';
 
 export default function Bar({
-  styles, data, unit, height, offsetY, minTime, showDelay, rowHeight, barHeight, maxTextWidth, current, onClick
+  styles, data, unit, height, offsetY, minTime, showDelay, rowHeight, barHeight, 
+  maxTextWidth, maxDurationWidth, current, onClick, selectedWidth,
 }) {
-  const x0 = maxTextWidth;
+  const x0 = maxTextWidth + maxDurationWidth + selectedWidth;
   const y0 = (rowHeight - barHeight) / 2 + offsetY;
   const cur = x0 + (current - minTime) / unit;
   return (
@@ -54,8 +55,8 @@ export default function Bar({
         }
         return (
           <g key={i} class="gantt-bar" style={{ cursor: 'pointer' }} onClick={handler}>
-            <text x={x - 4} y={cy} style={styles.text1}>{formatDay(v.start)}</text>
-            <text x={x + w1 + 4} y={cy} style={styles.text2}>{formatDay(v.end)}</text>
+            {/* <text x={x - 4} y={cy} style={styles.text1}>{formatDay(v.start)}</text>
+            <text x={x + w1 + 4} y={cy} style={styles.text2}>{formatDay(v.end)}</text> */}
             <rect x={x} y={y} width={w1} height={barHeight} rx={1.8} ry={1.8} style={bar.back} onClick={handler} />
             {w2 > 0.000001 ? <rect x={x} y={y} width={w2} height={barHeight} rx={1.8} ry={1.8} style={bar.front} /> : null}
             {v.type === 'group' ? null : (

@@ -56,6 +56,12 @@ export default function getStyles({
     week: {
       fill: 'rgba(252, 248, 227, .6)'
     },
+    weekGray: {
+      fill: 'rgb(248, 247, 255, 1)'
+    },
+    weekWhite: {
+      fill: 'rgb(255, 255, 255, 1)'
+    },
     box: {
       ...thickLine,
       fill: bgColor

@@ -2,9 +2,9 @@ import h from '../h';
 import { p2s } from '../utils';
 
 export default function LinkLine({
-  styles, data, unit, offsetY, minTime, rowHeight, barHeight, maxTextWidth
+  styles, data, unit, offsetY, minTime, rowHeight, barHeight, maxTextWidth, maxDurationWidth, selectedWidth
 }) {
-  const x0 = maxTextWidth;
+  const x0 = selectedWidth + maxTextWidth + maxDurationWidth;
   const y0 = (rowHeight / 2) + offsetY;
   const map = {};
   data.forEach((v, i) => {
