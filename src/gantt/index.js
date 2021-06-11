@@ -1,9 +1,7 @@
 import h from '../h';
 import { DAY } from '../utils';
 import Layout from './Layout';
-import DayHeader from './DayHeader';
 import WeekHeader from './WeekHeader';
-import MonthHeader from './MonthHeader';
 import Grid from './Grid';
 import Labels from './Labels';
 import GanttTime from './GanttTime';
@@ -12,94 +10,62 @@ import LinkLine from './LinkLine';
 import Bar from './Bar';
 import getStyles from './styles';
 
-const UNIT = {
-  day: DAY / 28,
-  week: 7 * DAY / 56,
-  month: 30 * DAY / 56
-};
 function NOOP() {}
 
 export default function Gantt({
   data = [],
   onClick = NOOP,
-  viewMode = 'week',
-  maxTextWidth = 140,
-  maxDurationWidth = 140,
   selectedWidth = 50,
   offsetY = 60,
   rowHeight = 40,
   barHeight = 16,
   thickWidth = 1.4,
   styleOptions = {},
-  showLinks = true,
   showDelay = true,
   start,
   end,
+  width
 }) {
-  const unit = UNIT[viewMode];
+  
+  const maxTextWidth = width ? width * 0.15 : 140;
+  const maxDurationWidth = width ? width * 0.15 : 140;
+  const month = width ? width/((end.getTime() - start.getTime())/28) : 30 * DAY / 56;
+  const unit = width ? month / 4 : 30 * DAY / 56;
   const minTime = start.getTime() - unit * 48;
   const maxTime = end.getTime() + unit * 48;
-
-  const width = (maxTime - minTime) / unit + maxTextWidth + maxDurationWidth;
+  const ganttWidth = width ? width : (maxTime - minTime) / unit + maxTextWidth + maxDurationWidth;
   const height = data.length * rowHeight + offsetY;
-  const box = `0 0 ${width} ${height}`;
+  const box = `0 0 ${ganttWidth} ${height}`;
   const current = Date.now();
   const styles = getStyles(styleOptions);
 
   return (
-    <svg width={width} height={height} viewBox={box} xmlns="http://www.w3.org/2000/svg">
+    <svg width={"100%"} height={height} viewBox={box} xmlns="http://www.w3.org/2000/svg">
       <Layout
         styles={styles}
-        width={width}
+        width={ganttWidth}
         height={height}
         offsetY={offsetY}
         thickWidth={thickWidth}
         maxTextWidth={maxTextWidth}
         maxDurationWidth={maxDurationWidth}
         selectedWidth={selectedWidth}
-      />
-      {viewMode === 'day' ? (
-        <DayHeader
-          styles={styles}
-          unit={unit}
-          height={height}
-          offsetY={offsetY}
-          minTime={minTime}
-          maxTime={maxTime}
-          maxTextWidth={maxTextWidth}
-          maxDurationWidth={maxDurationWidth}
-          selectedWidth={selectedWidth}
-        />
-      ) : null}
-      {viewMode === 'week' ? (
-        <WeekHeader
-          styles={styles}
-          unit={unit}
-          height={height}
-          offsetY={offsetY}
-          minTime={minTime}
-          maxTime={maxTime}
-          maxTextWidth={maxTextWidth}
-          maxDurationWidth={maxDurationWidth}
-          selectedWidth={selectedWidth}
-        />
-      ) : null}
-      {viewMode === 'month' ? (
-        <MonthHeader
-          styles={styles}
-          unit={unit}
-          offsetY={offsetY}
-          minTime={minTime}
-          maxTime={maxTime}
-          maxTextWidth={maxTextWidth}
-          maxDurationWidth={maxDurationWidth}
-          selectedWidth={selectedWidth}
-        />
-      ) : null}
+      />      
+      <WeekHeader
+        styles={styles}
+        unit={unit}
+        height={height}
+        offsetY={offsetY}
+        minTime={minTime}
+        maxTime={maxTime}
+        maxTextWidth={maxTextWidth}
+        maxDurationWidth={maxDurationWidth}
+        selectedWidth={selectedWidth}
+      />     
       <Grid
         styles={styles}
         data={data}
-        width={width}
+        width={ganttWidth}
         height={height}
         offsetY={offsetY}
         rowHeight={rowHeight}
@@ -107,56 +73,48 @@ export default function Gantt({
         maxDurationWidth={maxDurationWidth}
         selectedWidth={selectedWidth}
       />
-      {selectedWidth > 0 ? (
-        <SelectItem
-          styles={styles}
-          data={data}
-          onClick={onClick}
-          offsetY={offsetY}
-          rowHeight={rowHeight}
-          selectedWidth={selectedWidth}
-        />
-      ) : null}
-      {maxTextWidth > 0 ? (
-        <Labels
-          styles={styles}
-          data={data}
-          onClick={onClick}
-          offsetY={offsetY}
-          rowHeight={rowHeight}
-          maxTextWidth={maxTextWidth}
-          selectedWidth={selectedWidth}
-        />
-      ) : null}
-      {maxDurationWidth > 0 ? (
-        <GanttTime
-          styles={styles}
-          data={data}
-          onClick={onClick}
-          offsetY={offsetY}
-          rowHeight={rowHeight}
-          maxTextWidth={maxTextWidth}
-          maxDurationWidth={maxDurationWidth}
-          selectedWidth={selectedWidth}
-        />
-      ) : null}
-      {showLinks ? (
-        <LinkLine
-          styles={styles}
-          data={data}
-          unit={unit}
-          height={height}
-          current={current}
-          offsetY={offsetY}
-          minTime={minTime}
-          rowHeight={rowHeight}
-          barHeight={barHeight}
-          maxTextWidth={maxTextWidth}
-          maxDurationWidth={maxDurationWidth}
-          selectedWidth={selectedWidth}
-        />
-      ) : null}
-      <Bar
+      <SelectItem
+        styles={styles}
+        data={data}
+        onClick={onClick}
+        offsetY={offsetY}
+        rowHeight={rowHeight}
+        selectedWidth={selectedWidth}
+      />
+      <Labels
+        styles={styles}
+        data={data}
+        onClick={onClick}
+        offsetY={offsetY}
+        rowHeight={rowHeight}
+        maxTextWidth={maxTextWidth}
+        selectedWidth={selectedWidth}
+      />
+      <GanttTime
+        styles={styles}
+        data={data}
+        onClick={onClick}
+        offsetY={offsetY}
+        rowHeight={rowHeight}
+        maxTextWidth={maxTextWidth}
+        maxDurationWidth={maxDurationWidth}
+        selectedWidth={selectedWidth}
+      />
+      <LinkLine
+        styles={styles}
+        data={data}
+        unit={unit}
+        height={height}
+        current={current}
+        offsetY={offsetY}
+        minTime={minTime}
+        rowHeight={rowHeight}
+        barHeight={barHeight}
+        maxTextWidth={maxTextWidth}
+        maxDurationWidth={maxDurationWidth}
+        selectedWidth={selectedWidth}
+      />
+      {/* <Bar
         styles={styles}
         data={data}
         unit={unit}
@@ -171,7 +129,7 @@ export default function Gantt({
         maxTextWidth={maxTextWidth}
         maxDurationWidth={maxDurationWidth}
         selectedWidth={selectedWidth}
-      />
+      /> */}
     </svg>
   );
 }

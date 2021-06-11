@@ -7,11 +7,12 @@ import {
 } from './utils';
 
 export default class SVGGantt {
-  constructor(element, data, options = {}) {
+  constructor(element, data, width, options = {}) {
     this.dom = typeof element === 'string' ? document.querySelector(element) : element;
     this.format(data);
     this.options = options;
-    this.render();
+    this.width = width;
+    this.render();    
   }
   format(data) {
     this.data = data;
@@ -45,7 +46,8 @@ export default class SVGGantt {
       options.maxTextWidth = max(data.map(w), 0);
     }
     const props = { ...options, start, end };
-    this.tree = render(<Gantt data={data} {...props} />);
+    console.log("SVGGantt", this.width);
+    this.tree = render(<Gantt data={data} width={this.width} {...props} />);
     this.dom.appendChild(this.tree);
   }
 }

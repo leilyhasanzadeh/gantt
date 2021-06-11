@@ -1,11 +1,11 @@
 import h from '../h';
 
 export default function Layout({
-  styles, width, height, offsetY, thickWidth, maxTextWidth, maxDurationWidth, selectedWidth
+  styles, width, height, offsetY, maxTextWidth, maxDurationWidth, selectedWidth
 }) {
-  const x0 = thickWidth / 2;
-  const W = width - thickWidth;
-  const H = height - thickWidth;  
+  const x0 = 0;
+  const W = width ;
+  const H = height;  
 
   return (
     <g>

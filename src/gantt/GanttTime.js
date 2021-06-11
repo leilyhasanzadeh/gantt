@@ -15,7 +15,7 @@ export default function GanttTime({
           style={styles.label}
           onClick={() => onClick(v)}
         >
-          {v.text}
+          {v.start_end}
         </text>
       ))}
     </g>    

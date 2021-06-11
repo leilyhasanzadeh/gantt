@@ -4,9 +4,10 @@ import render from './render/string';
 import { minDate, maxDate } from './utils';
 
 export default class StrGantt {
-  constructor(data, options = {}) {
+  constructor(data, width, options = {}) {
     this.format(data);
-    this.options = options;
+    this.options = options;    
+    this.width = width;
   }
   format(data) {
     this.data = data;
@@ -30,6 +31,7 @@ export default class StrGantt {
       data, start, end, options
     } = this;
     const props = { ...options, start, end };
-    return render(<Gantt data={data} {...props} />);
+    console.log("StrGantt", this.width);
+    return render(<Gantt data={data} width={this.width} {...props} />);
   }
 }

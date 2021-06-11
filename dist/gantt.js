@@ -507,13 +507,12 @@
 	      width = _ref.width,
 	      height = _ref.height,
 	      offsetY = _ref.offsetY,
-	      thickWidth = _ref.thickWidth,
 	      maxTextWidth = _ref.maxTextWidth,
 	      maxDurationWidth = _ref.maxDurationWidth,
 	      selectedWidth = _ref.selectedWidth;
-	  var x0 = thickWidth / 2;
-	  var W = width - thickWidth;
-	  var H = height - thickWidth;
+	  var x0 = 0;
+	  var W = width;
+	  var H = height;
 	  return h("g", null, h("rect", {
 	    x: x0,
 	    y: x0,
@@ -576,66 +575,6 @@
 	  return h("g", null, ticks);
 	}
 
-	function DayHeader(_ref) {
-	  var styles = _ref.styles,
-	      unit = _ref.unit,
-	      minTime = _ref.minTime,
-	      maxTime = _ref.maxTime,
-	      height = _ref.height,
-	      offsetY = _ref.offsetY,
-	      maxTextWidth = _ref.maxTextWidth,
-	      maxDurationWidth = _ref.maxDurationWidth,
-	      selectedWidth = _ref.selectedWidth;
-	  var dates = getDates(minTime, maxTime);
-	  var ticks = [];
-	  var x0 = maxTextWidth + maxDurationWidth + selectedWidth;
-	  var y0 = offsetY / 2;
-	  var RH = height - y0;
-	  var len = dates.length - 1;
-
-	  for (var i = 0; i < len; i++) {
-	    var cur = new Date(dates[i]);
-	    var day = cur.getDay();
-	    var x = x0 + (dates[i] - minTime) / unit;
-	    var t = (dates[i + 1] - dates[i]) / unit;
-	    ticks.push(h("g", null, day === 0 || day === 6 ? h("rect", {
-	      x: x,
-	      y: y0,
-	      width: t,
-	      height: RH,
-	      style: styles.week
-	    }) : null, h("line", {
-	      x1: x,
-	      x2: x,
-	      y1: y0,
-	      y2: offsetY,
-	      style: styles.line
-	    }), h("text", {
-	      x: x + t / 2,
-	      y: offsetY * 0.75,
-	      style: styles.text3
-	    }, cur.getDate()), i === len - 1 ? h("line", {
-	      x1: x + t,
-	      x2: x + t,
-	      y1: y0,
-	      y2: offsetY,
-	      style: styles.line
-	    }) : null));
-	  }
-
-	  return h("g", null, h(YearMonth, {
-	    styles: styles,
-	    unit: unit,
-	    dates: dates,
-	    offsetY: offsetY,
-	    minTime: minTime,
-	    maxTime: maxTime,
-	    maxTextWidth: maxTextWidth,
-	    maxDurationWidth: maxDurationWidth,
-	    selectedWidth: selectedWidth
-	  }), ticks);
-	}
-
 	function WeekHeader(_ref) {
 	  var styles = _ref.styles,
 	      unit = _ref.unit,
@@ -689,97 +628,6 @@
 	    styles: styles,
 	    unit: unit,
 	    dates: dates,
-	    offsetY: offsetY,
-	    minTime: minTime,
-	    maxTime: maxTime,
-	    maxTextWidth: maxTextWidth,
-	    maxDurationWidth: maxDurationWidth,
-	    selectedWidth: selectedWidth
-	  }), ticks);
-	}
-
-	function Year(_ref) {
-	  var styles = _ref.styles,
-	      months = _ref.months,
-	      unit = _ref.unit,
-	      offsetY = _ref.offsetY,
-	      minTime = _ref.minTime,
-	      maxTime = _ref.maxTime,
-	      maxTextWidth = _ref.maxTextWidth,
-	      selectedWidth = _ref.selectedWidth;
-	  var years = months.filter(function (v) {
-	    return new Date(v).getMonth() === 0;
-	  });
-	  years.unshift(minTime);
-	  years.push(maxTime);
-	  var ticks = [];
-	  var x0 = selectedWidth + maxTextWidth;
-	  var y2 = offsetY / 2;
-	  var len = years.length - 1;
-
-	  for (var i = 0; i < len; i++) {
-	    var cur = new Date(years[i]);
-	    var x = x0 + (years[i] - minTime) / unit;
-	    var t = (years[i + 1] - years[i]) / unit;
-	    ticks.push(h("g", null, h("line", {
-	      x1: x,
-	      x2: x,
-	      y1: 0,
-	      y2: y2,
-	      style: styles.line
-	    }), t > 35 ? h("text", {
-	      x: x + t / 2,
-	      y: offsetY * 0.25,
-	      style: styles.text3
-	    }, cur.getFullYear()) : null));
-	  }
-
-	  return h("g", null, ticks);
-	}
-
-	function MonthHeader(_ref) {
-	  var styles = _ref.styles,
-	      unit = _ref.unit,
-	      minTime = _ref.minTime,
-	      maxTime = _ref.maxTime,
-	      offsetY = _ref.offsetY,
-	      maxTextWidth = _ref.maxTextWidth,
-	      maxDurationWidth = _ref.maxDurationWidth,
-	      selectedWidth = _ref.selectedWidth;
-	  var MONTH = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-	  var dates = getDates(minTime, maxTime);
-	  var months = dates.filter(function (v) {
-	    return new Date(v).getDate() === 1;
-	  });
-	  months.unshift(minTime);
-	  months.push(maxTime);
-	  var ticks = [];
-	  var x0 = selectedWidth + maxTextWidth + maxDurationWidth;
-	  var y0 = offsetY / 2;
-	  var len = months.length - 1;
-
-	  for (var i = 0; i < len; i++) {
-	    var cur = new Date(months[i]);
-	    var month = cur.getMonth();
-	    var x = x0 + (months[i] - minTime) / unit;
-	    var t = (months[i + 1] - months[i]) / unit;
-	    ticks.push(h("g", null, h("line", {
-	      x1: x,
-	      x2: x,
-	      y1: y0,
-	      y2: offsetY,
-	      style: styles.line
-	    }), t > 30 ? h("text", {
-	      x: x + t / 2,
-	      y: offsetY * 0.75,
-	      style: styles.text3
-	    }, MONTH[month]) : null));
-	  }
-
-	  return h("g", null, h(Year, {
-	    styles: styles,
-	    unit: unit,
-	    months: months,
 	    offsetY: offsetY,
 	    minTime: minTime,
 	    maxTime: maxTime,
@@ -873,7 +721,7 @@
 	      onClick: function onClick() {
 	        return _onClick(v);
 	      }
-	    }, v.text);
+	    }, v.start_end);
 	  }));
 	}
 
@@ -1057,131 +905,6 @@
 	  }));
 	}
 
-	function Bar(_ref) {
-	  var styles = _ref.styles,
-	      data = _ref.data,
-	      unit = _ref.unit,
-	      height = _ref.height,
-	      offsetY = _ref.offsetY,
-	      minTime = _ref.minTime,
-	      showDelay = _ref.showDelay,
-	      rowHeight = _ref.rowHeight,
-	      barHeight = _ref.barHeight,
-	      maxTextWidth = _ref.maxTextWidth,
-	      maxDurationWidth = _ref.maxDurationWidth,
-	      current = _ref.current,
-	      onClick = _ref.onClick,
-	      selectedWidth = _ref.selectedWidth;
-	  var x0 = maxTextWidth + maxDurationWidth + selectedWidth;
-	  var y0 = (rowHeight - barHeight) / 2 + offsetY;
-	  var cur = x0 + (current - minTime) / unit;
-	  return h("g", null, current > minTime ? h("line", {
-	    x1: cur,
-	    x2: cur,
-	    y1: offsetY,
-	    y2: height,
-	    style: styles.cline
-	  }) : null, data.map(function (v, i) {
-	    if (!v.end || !v.start) {
-	      return null;
-	    }
-
-	    var handler = function handler() {
-	      return onClick(v);
-	    };
-
-	    var x = x0 + (v.start - minTime) / unit;
-	    var y = y0 + i * rowHeight;
-	    var cy = y + barHeight / 2;
-
-	    if (v.type === 'milestone') {
-	      var size = barHeight / 2;
-	      var points = [[x, cy - size], [x + size, cy], [x, cy + size], [x - size, cy]].map(function (p) {
-	        return "".concat(p[0], ",").concat(p[1]);
-	      }).join(' ');
-	      return h("g", {
-	        key: i,
-	        "class": "gantt-bar",
-	        style: {
-	          cursor: 'pointer'
-	        },
-	        onClick: handler
-	      }, h("polygon", {
-	        points: points,
-	        style: styles.milestone,
-	        onClick: handler
-	      }), h("circle", {
-	        "class": "gantt-ctrl-start",
-	        "data-id": v.id,
-	        cx: x,
-	        cy: cy,
-	        r: 6,
-	        style: styles.ctrl
-	      }));
-	    }
-
-	    var w1 = (v.end - v.start) / unit;
-	    var w2 = w1 * v.percent;
-	    var bar = v.type === 'group' ? {
-	      back: styles.groupBack,
-	      front: styles.groupFront
-	    } : {
-	      back: styles.taskBack,
-	      front: styles.taskFront
-	    };
-
-	    if (showDelay) {
-	      if (x + w2 < cur && v.percent < 0.999999) {
-	        bar.front = styles.warning;
-	      }
-
-	      if (x + w1 < cur && v.percent < 0.999999) {
-	        bar.front = styles.danger;
-	      }
-	    }
-
-	    return h("g", {
-	      key: i,
-	      "class": "gantt-bar",
-	      style: {
-	        cursor: 'pointer'
-	      },
-	      onClick: handler
-	    }, h("rect", {
-	      x: x,
-	      y: y,
-	      width: w1,
-	      height: barHeight,
-	      rx: 1.8,
-	      ry: 1.8,
-	      style: bar.back,
-	      onClick: handler
-	    }), w2 > 0.000001 ? h("rect", {
-	      x: x,
-	      y: y,
-	      width: w2,
-	      height: barHeight,
-	      rx: 1.8,
-	      ry: 1.8,
-	      style: bar.front
-	    }) : null, v.type === 'group' ? null : h("g", null, h("circle", {
-	      "class": "gantt-ctrl-start",
-	      "data-id": v.id,
-	      cx: x - 12,
-	      cy: cy,
-	      r: 6,
-	      style: styles.ctrl
-	    }), h("circle", {
-	      "class": "gantt-ctrl-finish",
-	      "data-id": v.id,
-	      cx: x + w1 + 12,
-	      cy: cy,
-	      r: 6,
-	      style: styles.ctrl
-	    })));
-	  }));
-	}
-
 	function ownKeys$3(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 	function _objectSpread$3(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$3(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$3(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -1322,12 +1045,6 @@
 	  };
 	}
 
-	var UNIT = {
-	  day: DAY / 28,
-	  week: 7 * DAY / 56,
-	  month: 30 * DAY / 56
-	};
-
 	function NOOP() {}
 
 	function Gantt(_ref) {
@@ -1335,12 +1052,6 @@
 	      data = _ref$data === void 0 ? [] : _ref$data,
 	      _ref$onClick = _ref.onClick,
 	      onClick = _ref$onClick === void 0 ? NOOP : _ref$onClick,
-	      _ref$viewMode = _ref.viewMode,
-	      viewMode = _ref$viewMode === void 0 ? 'week' : _ref$viewMode,
-	      _ref$maxTextWidth = _ref.maxTextWidth,
-	      maxTextWidth = _ref$maxTextWidth === void 0 ? 140 : _ref$maxTextWidth,
-	      _ref$maxDurationWidth = _ref.maxDurationWidth,
-	      maxDurationWidth = _ref$maxDurationWidth === void 0 ? 140 : _ref$maxDurationWidth,
 	      _ref$selectedWidth = _ref.selectedWidth,
 	      selectedWidth = _ref$selectedWidth === void 0 ? 50 : _ref$selectedWidth,
 	      _ref$offsetY = _ref.offsetY,
@@ -1352,36 +1063,37 @@
 	      _ref$thickWidth = _ref.thickWidth,
 	      thickWidth = _ref$thickWidth === void 0 ? 1.4 : _ref$thickWidth,
 	      _ref$styleOptions = _ref.styleOptions,
-	      styleOptions = _ref$styleOptions === void 0 ? {} : _ref$styleOptions,
-	      _ref$showLinks = _ref.showLinks,
-	      showLinks = _ref$showLinks === void 0 ? true : _ref$showLinks,
-	      _ref$showDelay = _ref.showDelay,
-	      showDelay = _ref$showDelay === void 0 ? true : _ref$showDelay,
-	      start = _ref.start,
-	      end = _ref.end;
-	  var unit = UNIT[viewMode];
+	      styleOptions = _ref$styleOptions === void 0 ? {} : _ref$styleOptions;
+	      _ref.showDelay;
+	      var start = _ref.start,
+	      end = _ref.end,
+	      width = _ref.width;
+	  var maxTextWidth = width ? width * 0.15 : 140;
+	  var maxDurationWidth = width ? width * 0.15 : 140;
+	  var month = width ? width / ((end.getTime() - start.getTime()) / 28) : 30 * DAY / 56;
+	  var unit = width ? month / 4 : 30 * DAY / 56;
 	  var minTime = start.getTime() - unit * 48;
 	  var maxTime = end.getTime() + unit * 48;
-	  var width = (maxTime - minTime) / unit + maxTextWidth + maxDurationWidth;
+	  var ganttWidth = width ? width : (maxTime - minTime) / unit + maxTextWidth + maxDurationWidth;
 	  var height = data.length * rowHeight + offsetY;
-	  var box = "0 0 ".concat(width, " ").concat(height);
+	  var box = "0 0 ".concat(ganttWidth, " ").concat(height);
 	  var current = Date.now();
 	  var styles = getStyles(styleOptions);
 	  return h("svg", {
-	    width: width,
+	    width: "100%",
 	    height: height,
 	    viewBox: box,
 	    xmlns: "http://www.w3.org/2000/svg"
 	  }, h(Layout, {
 	    styles: styles,
-	    width: width,
+	    width: ganttWidth,
 	    height: height,
 	    offsetY: offsetY,
 	    thickWidth: thickWidth,
 	    maxTextWidth: maxTextWidth,
 	    maxDurationWidth: maxDurationWidth,
 	    selectedWidth: selectedWidth
-	  }), viewMode === 'day' ? h(DayHeader, {
+	  }), h(WeekHeader, {
 	    styles: styles,
 	    unit: unit,
 	    height: height,
@@ -1391,43 +1103,24 @@
 	    maxTextWidth: maxTextWidth,
 	    maxDurationWidth: maxDurationWidth,
 	    selectedWidth: selectedWidth
-	  }) : null, viewMode === 'week' ? h(WeekHeader, {
-	    styles: styles,
-	    unit: unit,
-	    height: height,
-	    offsetY: offsetY,
-	    minTime: minTime,
-	    maxTime: maxTime,
-	    maxTextWidth: maxTextWidth,
-	    maxDurationWidth: maxDurationWidth,
-	    selectedWidth: selectedWidth
-	  }) : null, viewMode === 'month' ? h(MonthHeader, {
-	    styles: styles,
-	    unit: unit,
-	    offsetY: offsetY,
-	    minTime: minTime,
-	    maxTime: maxTime,
-	    maxTextWidth: maxTextWidth,
-	    maxDurationWidth: maxDurationWidth,
-	    selectedWidth: selectedWidth
-	  }) : null, h(Grid, {
+	  }), h(Grid, {
 	    styles: styles,
 	    data: data,
-	    width: width,
+	    width: ganttWidth,
 	    height: height,
 	    offsetY: offsetY,
 	    rowHeight: rowHeight,
 	    maxTextWidth: maxTextWidth,
 	    maxDurationWidth: maxDurationWidth,
 	    selectedWidth: selectedWidth
-	  }), selectedWidth > 0 ? h(SelectItem, {
+	  }), h(SelectItem, {
 	    styles: styles,
 	    data: data,
 	    onClick: onClick,
 	    offsetY: offsetY,
 	    rowHeight: rowHeight,
 	    selectedWidth: selectedWidth
-	  }) : null, maxTextWidth > 0 ? h(Labels, {
+	  }), h(Labels, {
 	    styles: styles,
 	    data: data,
 	    onClick: onClick,
@@ -1435,7 +1128,7 @@
 	    rowHeight: rowHeight,
 	    maxTextWidth: maxTextWidth,
 	    selectedWidth: selectedWidth
-	  }) : null, maxDurationWidth > 0 ? h(GanttTime, {
+	  }), h(GanttTime, {
 	    styles: styles,
 	    data: data,
 	    onClick: onClick,
@@ -1444,7 +1137,7 @@
 	    maxTextWidth: maxTextWidth,
 	    maxDurationWidth: maxDurationWidth,
 	    selectedWidth: selectedWidth
-	  }) : null, showLinks ? h(LinkLine, {
+	  }), h(LinkLine, {
 	    styles: styles,
 	    data: data,
 	    unit: unit,
@@ -1452,21 +1145,6 @@
 	    current: current,
 	    offsetY: offsetY,
 	    minTime: minTime,
-	    rowHeight: rowHeight,
-	    barHeight: barHeight,
-	    maxTextWidth: maxTextWidth,
-	    maxDurationWidth: maxDurationWidth,
-	    selectedWidth: selectedWidth
-	  }) : null, h(Bar, {
-	    styles: styles,
-	    data: data,
-	    unit: unit,
-	    height: height,
-	    current: current,
-	    offsetY: offsetY,
-	    minTime: minTime,
-	    onClick: onClick,
-	    showDelay: showDelay,
 	    rowHeight: rowHeight,
 	    barHeight: barHeight,
 	    maxTextWidth: maxTextWidth,
@@ -1545,14 +1223,15 @@
 	function _objectSpread$2(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$2(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$2(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 	var SVGGantt = /*#__PURE__*/function () {
-	  function SVGGantt(element, data) {
-	    var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+	  function SVGGantt(element, data, width) {
+	    var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
 
 	    _classCallCheck(this, SVGGantt);
 
 	    this.dom = typeof element === 'string' ? document.querySelector(element) : element;
 	    this.format(data);
 	    this.options = options;
+	    this.width = width;
 	    this.render();
 	  }
 
@@ -1608,8 +1287,10 @@
 	        end: end
 	      });
 
+	      console.log("SVGGantt", this.width);
 	      this.tree = render$2(h(Gantt, _extends({
-	        data: data
+	        data: data,
+	        width: this.width
 	      }, props)));
 	      this.dom.appendChild(this.tree);
 	    }
@@ -1915,13 +1596,14 @@
 	function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 	var StrGantt = /*#__PURE__*/function () {
-	  function StrGantt(data) {
-	    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+	  function StrGantt(data, width) {
+	    var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
 	    _classCallCheck(this, StrGantt);
 
 	    this.format(data);
 	    this.options = options;
+	    this.width = width;
 	  }
 
 	  _createClass(StrGantt, [{
@@ -1960,8 +1642,10 @@
 	        end: end
 	      });
 
+	      console.log("StrGantt", this.width);
 	      return render(h(Gantt, _extends({
-	        data: data
+	        data: data,
+	        width: this.width
 	      }, props)));
 	    }
 	  }]);
